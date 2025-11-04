@@ -1,0 +1,13 @@
+names:
+- algae
+- coral
+nc: 2
+roboflow:
+  license: CC BY 4.0
+  project: frc-2025-algae-and-coral
+  url: https://universe.roboflow.com/frc-team-503-frog-force/frc-2025-algae-and-coral/dataset/1
+  version: 1
+  workspace: frc-team-503-frog-force
+test: ../test/images
+train: ../train/images
+val: ../valid/images
