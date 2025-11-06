@@ -1,16 +1,19 @@
 from networktables import NetworkTables
 import time
 
-NetworkTables.initialize(server='10.91.63.2')
-vision = NetworkTables.getTable("vision")
+# O IP do rádio do roboRIO 2 é = "10.91.63.2"
 
-while not NetworkTables.isConnected():
-    print("Tentando conectar...")
-    time.sleep(0.5)
-print("✅ Conectado")
+def rio2wpi(ip_roborio):
+    NetworkTables.initialize(server=ip_roborio)
+    vision = NetworkTables.getTable("vision")
 
-vision.putNumber("distancia", 1.23)
-vision.putBoolean("alvo_detectado", True)
+    while not NetworkTables.isConnected():
+        print("Tentando conectar...")
+        time.sleep(0.5)
+    print("✅ Conectado")
 
-print("📡 Valor enviado.")
-print("🔍 Valor lido de volta:", vision.getNumber("distancia", 0), "|", vision.getBoolean("alvo_detectado", False))
+    vision.putNumber("distancia", 1.23)
+    vision.putBoolean("alvo_detectado", True)
+
+    print("📡 Valor enviado.")
+    print("🔍 Valor lido de volta:", vision.getNumber("distancia", 0), "|", vision.getBoolean("alvo_detectado", False))
