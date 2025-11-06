@@ -5,7 +5,7 @@ import time
 
 def rio2wpi(ip_roborio):
     NetworkTables.initialize(server=ip_roborio)
-    vision = NetworkTables.getTable("vision")
+    vision = NetworkTables.getTable("limelight-front")
 
     while not NetworkTables.isConnected():
         print("Tentando conectar...")
@@ -17,3 +17,7 @@ def rio2wpi(ip_roborio):
 
     print("📡 Valor enviado.")
     print("🔍 Valor lido de volta:", vision.getNumber("distancia", 0), "|", vision.getBoolean("alvo_detectado", False))
+
+    return vision
+
+rio2wpi("10.91.63.2")

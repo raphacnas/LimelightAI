@@ -18,3 +18,5 @@ def ConnectionTest(ip_roborio):
             time.sleep(1)
     else:
         print("❌ Não foi possível conectar ao NetworkTables.")
+
+ConnectionTest("10.91.63.2")

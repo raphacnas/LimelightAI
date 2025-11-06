@@ -25,3 +25,5 @@ def StreamDebug(LimeIP):
 
     cap.release()
     cv2.destroyAllWindows()
+
+StreamDebug("10.91.63.30:5800")
