@@ -3,7 +3,7 @@ import time
 
 # O IP do rádio do roboRIO 2 é = "10.91.63.2"
 
-def rio2wpi(ip_roborio, distancia, pieceBool):
+def rio2wpi_coral(ip_roborio, distancia):
     NetworkTables.initialize(server=ip_roborio)
     vision = NetworkTables.getTable("limelight-front")
 
@@ -12,8 +12,23 @@ def rio2wpi(ip_roborio, distancia, pieceBool):
         time.sleep(0.5)
     print("✅ Conectado")
 
-    vision.putNumber("distancia", distancia)
-    vision.putBoolean("alvo_detectado", pieceBool)
+    vision.putNumber("distancia_coral", distancia)
+
+    print("📡 Valor enviado.")
+    print("🔍 Valor lido de volta:", vision.getNumber("distancia", 0), "|", vision.getBoolean("alvo_detectado", False))
+
+    return vision
+
+def rio2wpi_algae(ip_roborio, distancia):
+    NetworkTables.initialize(server=ip_roborio)
+    vision = NetworkTables.getTable("limelight-front")
+
+    while not NetworkTables.isConnected():
+        print("Tentando conectar...")
+        time.sleep(0.5)
+    print("✅ Conectado")
+
+    vision.putNumber("distancia_algae", distancia)
 
     print("📡 Valor enviado.")
     print("🔍 Valor lido de volta:", vision.getNumber("distancia", 0), "|", vision.getBoolean("alvo_detectado", False))
