@@ -6,8 +6,8 @@ limelight_url = "http://10.91.63.30:5800"
 results = model.predict(source=limelight_url, show=True, stream=True, verbose=False)
 
 # Variáveis para calcular a distância
-focal_length = 368 # Em pixels
-real_width = 0.14 # Em metros
+focal_length = 256 # Em pixels
+real_width = 0.114 # Em metros
 
 for r in results:
     boxes = r.boxes
@@ -16,6 +16,15 @@ for r in results:
 
         # Calculo da distância do coral
         if r.names[cls] == "coral":
+            x1, y1, x2, y2 = box.xyxy[0]
+            width_pixels = x2 - x1
+
+            # Calcula distância
+            distance_m = (real_width * focal_length) / width_pixels
+
+            print(f"🎯 {r.names[cls]} a aproximadamente {distance_m:.2f} m de distância")
+
+        if r.names[cls] == "algae":
             x1, y1, x2, y2 = box.xyxy[0]
             width_pixels = x2 - x1
 
