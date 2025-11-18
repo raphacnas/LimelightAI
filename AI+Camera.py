@@ -4,7 +4,7 @@ from RIO2WPILIB import *
 # Funções para rodar a IA
 model = YOLO("gamepiece25.pt")
 limelight_url = "http://10.91.63.30:5800"
-results = model.predict(source=0, show=True, stream=True, verbose=False)
+results = model.predict(source=limelight_url, show=True, stream=True, verbose=False)
 
 # Variáveis para calcular a distância
 focal_length = 256 # Em pixels
