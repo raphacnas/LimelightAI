@@ -7,7 +7,8 @@ results = model.predict(source=limelight_url, show=True, stream=True, verbose=Fa
 
 # Variáveis para calcular a distância
 focal_length = 256 # Em pixels
-real_width = 0.114 # Em metros
+coral_width = 0.114 # Em metros
+algae_width = 0.0192
 
 for r in results:
     boxes = r.boxes
@@ -20,7 +21,7 @@ for r in results:
             width_pixels = x2 - x1
 
             # Calcula distância
-            distance_m = (real_width * focal_length) / width_pixels
+            distance_m = (coral_width * focal_length) / width_pixels
 
             print(f"🎯 {r.names[cls]} a aproximadamente {distance_m:.2f} m de distância")
 
@@ -29,6 +30,6 @@ for r in results:
             width_pixels = x2 - x1
 
             # Calcula distância
-            distance_m = (real_width * focal_length) / width_pixels
+            distance_m = (algae_width * focal_length) / width_pixels
 
             print(f"🎯 {r.names[cls]} a aproximadamente {distance_m:.2f} m de distância")
